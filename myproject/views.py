@@ -6,10 +6,9 @@ from goods.models import Categories
 
 def index(request):
 
-    categories = Categories.objects.all()
+
     content = {"title": "ArtWood- Главная",
                "content": "Магазин мебели - ArtWood",
-               "categories":categories,
                }
 
     return render(request, "myproject/index.html", content)

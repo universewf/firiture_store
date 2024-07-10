@@ -38,5 +38,12 @@ class Products(models.Model):
         verbose_name_plural = "Продукты" #название категории в мн.числе
 
     def __str__(self):
-        return self.name #отображение названия queryseta
+        return f"Название: {self.name},Количество: {self.quantity},Цена: {self.price}" #отображение названия queryseta
 
+    def display_id(self): #исправляем отображение id Товара в магазине
+        return f"{self.id:05}" #id состоит из 5 символов
+
+    def sell_price(self):
+        if self.discount:
+            return round(self.price - self.price*self.discount/100,2)
+        return self.price
