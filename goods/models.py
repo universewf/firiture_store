@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 # null-поле не имеет значения
 # blank - поле может быть пустым
 
@@ -43,7 +42,8 @@ class Products(models.Model):
     def display_id(self): #исправляем отображение id Товара в магазине
         return f"{self.id:05}" #id состоит из 5 символов
 
-    def sell_price(self):
-        if self.discount:
-            return round(self.price - self.price*self.discount/100,2)
-        return self.price
+    def sell_price(self): #определяем скидку
+        if self.discount: #если есть у цены скидка
+            return round(self.price - self.price*self.discount/100,2) #возвращаем цена - (цена-скидка)/100 ,
+        # 2=(ndigits) - округляет число number до ndigits знаков после запятой
+        return self.price #если скидки нет,то отображаем просто цену
