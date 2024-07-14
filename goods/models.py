@@ -35,6 +35,7 @@ class Products(models.Model):
         db_table = "product"  ##как отображать модель в БД
         verbose_name = "Продукт" #название категории в ед.числе
         verbose_name_plural = "Продукты" #название категории в мн.числе
+        ordering = ("id",) #сортировка товаров по id,чтобы работал пагинатор без ошибок
 
     def __str__(self):
         return f"Название: {self.name},Количество: {self.quantity},Цена: {self.price}" #отображение названия queryseta
