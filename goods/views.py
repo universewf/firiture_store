@@ -17,8 +17,8 @@ def catalog(request,category_slug):
     if on_sale:
         goods = goods.filter(discount__gt=0)#фильтруем queryset,если скидка больше чем 0
 
-    if order_by:
-        goods = goods.order_by("order_by")#
+    if order_by and order_by != "default":
+        goods = goods.order_by(order_by)
 
     paginator = Paginator(goods,3) #сколько товаров на странице
     current_page =paginator.page(int(page))#какая страница открывается по умолчанию
