@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # null-поле не имеет значения
 # blank - поле может быть пустым
@@ -48,3 +49,6 @@ class Products(models.Model):
             return round(self.price - self.price*self.discount/100,2) #возвращаем цена - (цена-скидка)/100 ,
         # 2=(ndigits) - округляет число number до ndigits знаков после запятой
         return self.price #если скидки нет,то отображаем просто цену
+
+    def get_absolute_url(self):
+        return reverse("catalog:product", kwargs={"product_slug": self.slug})

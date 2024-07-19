@@ -5,6 +5,7 @@ from django.contrib.postgres.search import (
     SearchRank,
     SearchHeadline,
 )
+
 from goods.models import Products
 
 
@@ -45,3 +46,6 @@ def q_search(query):
         )
     )
     return result
+
+
+
